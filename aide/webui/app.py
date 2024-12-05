@@ -75,7 +75,7 @@ class WebUI:
         Set up the Streamlit page configuration and load custom CSS.
         """
         st.set_page_config(
-            page_title="AIDE: Machine Learning Engineer Agent",
+            page_title="Machine Learning Engineer Agent",
             layout="wide",
         )
         WebUI.load_css()
@@ -142,8 +142,8 @@ class WebUI:
         st.header("Input")
         uploaded_files = self.handle_file_upload()
         goal_text, eval_text, num_steps = self.handle_user_inputs()
-        if st.button("Run AIDE", type="primary", use_container_width=True):
-            with st.spinner("AIDE is running..."):
+        if st.button("Run Agent", type="primary", use_container_width=True):
+            with st.spinner("Agent is running..."):
                 results = self.run_aide(
                     uploaded_files, goal_text, eval_text, num_steps, results_col
                 )
@@ -178,7 +178,7 @@ class WebUI:
                 st.session_state.example_files = self.load_example_files()
 
         if st.session_state.get("example_files"):
-            st.info("Example files loaded! Click 'Run AIDE' to proceed.")
+            st.info("Example files loaded! Click 'Run Agent' to proceed.")
             with st.expander("View Loaded Files", expanded=False):
                 for file in st.session_state.example_files:
                     st.text(f"📄 {file['name']}")
